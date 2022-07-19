@@ -1,5 +1,6 @@
 import { ConfigModule } from '@nestjs/config';
-import dbConfig from 'src/config/db.config';
+
+import dbConfig from './src/config/db.config';
 
 ConfigModule.forRoot({
   isGlobal: true,

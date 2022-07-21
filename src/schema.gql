@@ -10,7 +10,7 @@ input CreateUserInput {
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   removeUser(uuid: String!): Int!
-  updateUser(updateUserInput: UpdateUserInput!): Int!
+  updateUser(updateUserInput: UpdateUserInput!): User!
 }
 
 type Query {

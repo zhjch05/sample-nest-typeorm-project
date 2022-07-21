@@ -28,10 +28,10 @@ export default class UsersResolver {
     return this.usersService.findOne(uuid);
   }
 
-  @Mutation(() => Int)
+  @Mutation(() => User)
   async updateUser(
     @Args('updateUserInput') updateUserInput: UpdateUserInput,
-  ): Promise<number> {
+  ): Promise<User> {
     return this.usersService.update(updateUserInput.uuid, updateUserInput);
   }
 

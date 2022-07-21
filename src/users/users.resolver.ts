@@ -17,24 +17,26 @@ export default class UsersResolver {
   }
 
   @Query(() => [User], { name: 'users' })
-  findAll(): Promise<User[]> {
+  async findAll(): Promise<User[]> {
     return this.usersService.findAll();
   }
 
   @Query(() => User, { name: 'user' })
-  findOne(@Args('uuid', { type: () => String }) uuid: string): Promise<User> {
+  async findOne(
+    @Args('uuid', { type: () => String }) uuid: string,
+  ): Promise<User> {
     return this.usersService.findOne(uuid);
   }
 
-  @Mutation(() => User)
-  updateUser(
+  @Mutation(() => Int)
+  async updateUser(
     @Args('updateUserInput') updateUserInput: UpdateUserInput,
-  ): Promise<User> {
+  ): Promise<number> {
     return this.usersService.update(updateUserInput.uuid, updateUserInput);
   }
 
   @Mutation(() => Int)
-  removeUser(@Args('uuid', { type: () => String }) uuid: string) {
+  async removeUser(@Args('uuid', { type: () => String }) uuid: string) {
     return this.usersService.remove(uuid);
   }
 }

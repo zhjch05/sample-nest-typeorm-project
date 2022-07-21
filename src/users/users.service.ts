@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as _ from 'lodash';
 import { Repository } from 'typeorm';
 
 import CreateUserInput from './dto/create-user.input';
@@ -29,21 +28,21 @@ export default class UsersService {
     return this.userRepo.findOneBy({ uuid });
   }
 
-  async update(uuid: string, updateUserInput: UpdateUserInput): Promise<any> {
-    const result = await this.userRepo
-      .createQueryBuilder()
-      .update(User)
-      .set(updateUserInput)
-      .where({ uuid })
-      .returning('*')
-      .execute();
-    return result.raw[0]
-      ? _.mapKeys(result.raw[0], (_v: any, k: any) => _.camelCase(k))
-      : null;
+  async update(uuid: string, updateUserInput: UpdateUserInput) {
+    return (await this.userRepo.update({ uuid }, updateUserInput)).affected;
+    // const result = await this.userRepo
+    //   .createQueryBuilder()
+    //   .update(User)
+    //   .set(updateUserInput)
+    //   .where({ uuid })
+    //   .returning('*')
+    //   .execute();
+    // return result.raw[0]
+    //   ? _.mapKeys(result.raw[0], (_v: any, k: any) => _.camelCase(k))
+    //   : null;
   }
 
   async remove(uuid: string) {
-    const result = await this.userRepo.delete(uuid);
-    return result.affected;
+    return (await this.userRepo.delete(uuid)).affected;
   }
 }

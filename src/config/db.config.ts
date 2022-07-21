@@ -18,4 +18,5 @@ export default registerAs('database', () => ({
     migrationsDir: `src/infrastructure/database/migrations`,
   },
   namingStrategy: new SnakeNamingStrategy(),
+  autoLoadEntities: true,
 }));

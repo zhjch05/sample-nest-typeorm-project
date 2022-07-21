@@ -11,6 +11,8 @@ import dbConfig from 'src/config/db.config';
 
 import FooResolver from './app.resolver';
 
+import UsersModule from './users/users.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -33,6 +35,7 @@ import FooResolver from './app.resolver';
       playground: false,
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
+    UsersModule,
   ],
   providers: [FooResolver],
 })

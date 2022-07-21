@@ -17,7 +17,6 @@ module.exports = {
     'airbnb-base',
     'airbnb-typescript/base',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:jest/recommended',
     'prettier',
     'plugin:prettier/recommended',
@@ -63,5 +62,9 @@ module.exports = {
         ],
       },
     ],
+    'no-return-await': 'off',
+    '@typescript-eslint/return-await': 'error',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
   },
 };

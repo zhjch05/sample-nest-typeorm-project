@@ -2,6 +2,33 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateUserInput {
+  """User's email address"""
+  email: String!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  removeUser(uuid: String!): Int!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+}
+
 type Query {
   sayHello: String!
+  user(uuid: String!): User!
+  users: [User!]!
+}
+
+input UpdateUserInput {
+  """User's email address"""
+  email: String
+  uuid: String!
+}
+
+type User {
+  """User's email address"""
+  email: String!
+
+  """Generated Primary UUID column"""
+  uuid: String!
 }
